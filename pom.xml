@@ -18,15 +18,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- the progressive-company-super-pom manages all plugin versions for us, we only need to override 
-    where we depend on lower version (e.g. plugin-plugin) -->
-    <parent>
-        <groupId>com.simpligility.maven</groupId>
-        <artifactId>progressive-organization-pom</artifactId>
-        <version>1.3.0</version>
-    </parent>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 
-    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+    <groupId>es.e-ucm.com.jayway.maven.plugins.android.generation2</groupId>
     <artifactId>android-maven-plugin</artifactId>
     <version>3.9.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
@@ -84,13 +82,22 @@
         <url>https://travis-ci.org/jayway/maven-android-plugin</url>
     </ciManagement>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <name>Jayway OpenSource SNAPSHOTs on Sonatype.org</name>
-            <url>http://oss.sonatype.org/content/repositories/jayway-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
+	<!-- ====================================================================== -->
+	<!-- DISTRIBUTION MANAGEMENT -->
+	<!-- ====================================================================== -->
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
     <licenses>
         <license>
